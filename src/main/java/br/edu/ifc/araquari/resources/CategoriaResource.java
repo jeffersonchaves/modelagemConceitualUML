@@ -1,7 +1,4 @@
-package br.edu.ifc.araquari.resources;
-
-import java.util.ArrayList;
-import java.util.List;
+package br.edu.ifc.araquari.resources; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,28 +17,10 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService service;
 	
-	@RequestMapping(value="/",method=RequestMethod.GET)
-	public List<Categoria> listar() {
-		
-		Categoria cat1 = new Categoria(1, "Escolar");
-		Categoria cat2 = new Categoria(2, "Escritorio");
-		Categoria cat3 = new Categoria(3, "Informática");
-		
-		List<Categoria> lista = new ArrayList<>();
-		
-		lista.add(cat1);
-		lista.add(cat2);
-		lista.add(cat3);
-		lista.add(cat3);
-
-		return lista;		
-	}
-	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
 		Categoria obj = service.buscar(id);
-
 		return ResponseEntity.ok().body(obj);		
 	}
 }

@@ -14,6 +14,10 @@ public class CategoriaService {
 	
 	public Categoria buscar(Integer id) {
 		Categoria obj = repository.findOne(id);
+		
+		if(obj == null) {
+			throw new ObjectNotFoundException("Objeto não encontrado. id: "+ id);
+		}
 		return obj;
 	}
 	
